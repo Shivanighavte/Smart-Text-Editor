@@ -1,6 +1,6 @@
 # Smart-Text-Editor
 
-⚠️ Important: To use Smart Features (Summarization, Translation, Formal Rewriting), you must set up your own Google Gemini API key inside the gemini-api.js file.
+⚠️ Important: To use Smart Features (Summarization, Translation, Formal Rewriting), you must set up `your own Google Gemini API key` inside the `gemini-api.js file`.
 The demo includes a basic fallback, but for the best results, you should use your personal API key.
 
 
