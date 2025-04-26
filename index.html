@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Text Editor</title>
+    <!-- Bootstrap 5 CSS (Replit Theme) -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <div class="container-fluid py-3">
+        <div class="row mb-3">
+            <div class="col text-center">
+                <h1 class="h3 mb-0">Smart Text Editor</h1>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <!-- Text Formatting Toolbar -->
+                <div class="btn-toolbar mb-3" role="toolbar" aria-label="Text formatting options">
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Basic formatting">
+                        <button type="button" class="btn btn-secondary" data-command="bold" title="Bold">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-command="italic" title="Italic">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-command="underline" title="Underline">
+                            <i class="fas fa-underline"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-command="strikeThrough"
+                            title="Strikethrough">
+                            <i class="fas fa-strikethrough"></i>
+                        </button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Headings">
+                        <button type="button" class="btn btn-secondary" data-command="formatBlock" data-value="h1"
+                            title="Heading 1">H1</button>
+                        <button type="button" class="btn btn-secondary" data-command="formatBlock" data-value="h2"
+                            title="Heading 2">H2</button>
+                        <button type="button" class="btn btn-secondary" data-command="formatBlock" data-value="h3"
+                            title="Heading 3">H3</button>
+                        <button type="button" class="btn btn-secondary" data-command="formatBlock" data-value="p"
+                            title="Paragraph">P</button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Lists">
+                        <button type="button" class="btn btn-secondary" data-command="insertUnorderedList"
+                            title="Bullet List">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-command="insertOrderedList"
+                            title="Numbered List">
+                            <i class="fas fa-list-ol"></i>
+                        </button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Alignment">
+                        <button type="button" class="btn btn-secondary" data-command="justifyLeft" title="Align Left">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-command="justifyCenter"
+                            title="Align Center">
+                            <i class="fas fa-align-center"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-command="justifyRight" title="Align Right">
+                            <i class="fas fa-align-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Other formatting">
+                        <button type="button" class="btn btn-secondary" data-command="removeFormat"
+                            title="Clear Formatting">
+                            <i class="fas fa-eraser"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- File and Text Operations Toolbar -->
+                <div class="btn-toolbar mb-3" role="toolbar" aria-label="File operations">
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="File operations">
+                        <label class="btn btn-secondary" title="Open File">
+                            <i class="fas fa-folder-open"></i> Open
+                            <input type="file" id="fileInput" accept=".txt" style="display: none;">
+                        </label>
+                        <button type="button" class="btn btn-secondary" id="copyButton" title="Copy Text">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="clearButton" title="Clear Editor">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="downloadButton" title="Download as TXT">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Smart features">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="smartFeaturesDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-magic"></i> Smart Features
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="smartFeaturesDropdown">
+                                <li><button class="dropdown-item" id="summarizeButton" type="button">Summarize
+                                        Text</button></li>
+
+                                <li><button class="dropdown-item" id="formalButton" type="button">Make Formal</button>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="Language features">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="translateDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-language"></i> Translate
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="translateDropdown">
+                                <li><button class="dropdown-item translate-button" data-lang="English"
+                                        type="button">English</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="Hindi"
+                                        type="button">Hindi</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="Marathi"
+                                        type="button">Marathi</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="French"
+                                        type="button">French</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="German"
+                                        type="button">German</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="Chinese"
+                                        type="button">Chinese</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="Japanese"
+                                        type="button">Japanese</button></li>
+                                <li><button class="dropdown-item translate-button" data-lang="Arabic"
+                                        type="button">Arabic</button></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="btn-group mb-2" role="group" aria-label="Speech to text">
+                        <button type="button" class="btn btn-danger" id="speechButton">
+                            <i class="fas fa-microphone"></i> Speech to Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Editor Area -->
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Editor</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="editor" class="form-control editor-content" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Area -->
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Results</h5>
+                        <button type="button" class="btn btn-sm btn-primary float-end mt-2" id="applyResultButton">Apply
+                            to Editor</button>
+                    </div>
+                    <div class="card-body">
+                        <div id="results" class="results-area">
+                            <p class="text-muted">Results from smart features will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Area -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="status" class="status-area">
+                            <p class="text-muted">Ready</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for showing processing status -->
+        <div class="modal fade" id="processingModal" tabindex="-1" aria-labelledby="processingModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="processingModalLabel">Processing</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="spinner-border text-primary mb-3" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p id="processingMessage">Processing your request...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main Editor Scripts -->
+    <script src="js/gemini-api.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/text-analysis.js"></script>
+    <script src="js/speech-to-text.js"></script>
+    <script src="js/file-operations.js"></script>
+    <script src="js/translation.js"></script>
+</body>
+
+</html>
