@@ -1,5 +1,5 @@
 
-const GEMINI_API_KEY = '';  // use your own api key
+const GEMINI_API_KEY = 'AIzaSyCWTX8PuFB5vklnkNsoWefb-a07Z7ytUCc';  // use your own api key
 
 
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
