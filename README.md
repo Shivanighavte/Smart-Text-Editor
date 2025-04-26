@@ -1,5 +1,10 @@
 # Smart-Text-Editor
 
+⚠️ Important: To use Smart Features (Summarization, Translation, Formal Rewriting), you must set up your own Google Gemini API key inside the gemini-api.js file.
+The demo includes a basic fallback, but for the best results, you should use your personal API key.
+
+
+
 `Smart Text Editor` is an AI-powered, web-based writing tool designed to make text editing smarter, faster, and easier.  
 It combines traditional text formatting with modern AI features like summarization, formal rewriting, translation, and speech-to-text, all in a beautiful and responsive interface.
 
