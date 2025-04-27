@@ -5,7 +5,7 @@ The demo includes a basic fallback, but for the best results, you should use you
 
 🔗 Live Demo
 👉 Click Here to Open Smart Text Editor
- `https://shivanighavte.github.io/Smart-Text-Editor/`
+ https://shivanighavte.github.io/Smart-Text-Editor/
 
 
 `Smart Text Editor` is an AI-powered, web-based writing tool designed to make text editing smarter, faster, and easier.  
